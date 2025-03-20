@@ -9,6 +9,7 @@ const context = canvas.getContext("2d");
 
 //the seed the user currently has selected
 let selectedSeed = null;
+let selectedImg = new Image();
 
 //defined in loadHandler
 let canvasGrid;
@@ -49,7 +50,8 @@ function onSeedClicked(clickEvent){
     }
 
     selectedSeed = clickEvent.target.parentElement.id;
-    clickEvent.target.parentElement.querySelector(".overlay").style.display = "block";
+    selectedImg.src = getImgSrc(selectedSeed); // get the image associated with the selected seed, so we can draw it on the canvas grid
+    clickEvent.target.parentElement.querySelector(".overlay").style.display = "block"; // highlight the clicked seed
     console.log(clickEvent.target.parentElement.id);
 }
 
@@ -59,6 +61,7 @@ function onSeedClicked(clickEvent){
 
 //gets the image src given the ID of the parent element (selectedSeed)
 function getImgSrc(seed){
+    seed = document.getElementById(seed);
     let seedimg = seed.querySelector("img");
     if (!seedimg) return null;
     return seedimg.src;
@@ -110,9 +113,13 @@ class grid {
         //check if the click was in the grid
         if (xPos > 0 && xPos < this.cellSize * this.cols && yPos > 0 && yPos < this.cellSize * this.rows){
             console.log("clicked inside the grid!");
-            let x = Math.floor(xPos / this.cellSize) + 1;
-            let y = Math.floor(yPos / this.cellSize) + 1;
+
+            // Reference the row and column of the clicked grid cell. Note that these are 0-indexed to make math easier down the road
+            let x = Math.floor(xPos / this.cellSize);
+            let y = Math.floor(yPos / this.cellSize);
+
             console.log("ClickPos: x=" + x + " y=" + y);
+            return {x,y};
         }
         else {
             console.log("clicked outside the grid");
@@ -122,7 +129,7 @@ class grid {
 
     //draws an image in row cellY, in column cellX
     drawImg(cellX, cellY, img){
-
+        context.drawImage(img, cellX * this.cellSize, cellY * this.cellSize, this.cellSize, this.cellSize);
     }
 }
 
@@ -131,8 +138,14 @@ canvas.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    if (grid.getCell(x, y) != null){
-        console.log("Skib!");
+
+    let selectedCell = grid.getCell(x, y);
+    if (selectedCell != null){
+        //only draw an img if we have a seed selected
+        if (selectedSeed != null){
+            console.log("Drawing an image in the cell!");
+            grid.drawImg(selectedCell.x, selectedCell.y, selectedImg);
+        }
     }
 });
 
