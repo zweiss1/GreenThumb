@@ -129,7 +129,12 @@ class grid {
 
     //draws an image in row cellY, in column cellX
     drawImg(cellX, cellY, img){
-        context.drawImage(img, cellX * this.cellSize, cellY * this.cellSize, this.cellSize, this.cellSize);
+        //shrinking the image, trust
+        context.drawImage(img, cellX * this.cellSize + 3, cellY * this.cellSize + 3, this.cellSize - 6, this.cellSize - 6);
+    }
+
+    clearCell(cellX, cellY){
+        context.clearRect(cellX * this.cellSize + 3, cellY * this.cellSize + 3, this.cellSize - 6, this.cellSize - 6)
     }
 }
 
@@ -144,7 +149,11 @@ canvas.addEventListener("click", (event) => {
         //only draw an img if we have a seed selected
         if (selectedSeed != null){
             console.log("Drawing an image in the cell!");
+            grid.clearCell(selectedCell.x, selectedCell.y); // just in case
             grid.drawImg(selectedCell.x, selectedCell.y, selectedImg);
+        }
+        else{ //if we don't have a selected seed, erase the cell we clicked
+            grid.clearCell(selectedCell.x, selectedCell.y);
         }
     }
 });
