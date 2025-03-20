@@ -1,6 +1,22 @@
 const express = require("express");
 const app = express();
 
+const seeds = [
+    {imgURL:"/images/broccoli.png", name:"broccoli"}, 
+    {imgURL:"/images/cabbage.png", name:"cabbage"}, 
+    {imgURL:"/images/carrot.png", name:"carrot"}, 
+    {imgURL:"/images/chomper.webp", name:"chomper"}, 
+    {imgURL:"/images/garlic.png", name:"garlic"}, 
+    {imgURL:"/images/pepper.png", name:"pepper"}, 
+    {imgURL:"/images/pumpkin.png", name:"pumpkin"}, 
+    {imgURL:"/images/radish.png", name:"radish"}, 
+    {imgURL:"/images/redcabbage.webp", name:"redcabbage"}, 
+    {imgURL:"/images/snowpea.webp", name:"snowpea"}, 
+    {imgURL:"/images/snowpeashooter.png", name:"snowpeashooter"}, 
+    {imgURL:"/images/spinach.png", name:"spinach"}, 
+    {imgURL:"/images/tomato.png", name:"tomato"}, 
+    {imgURL:"/images/whitepumpkin.png", name:"whitepumpkin"}];
+
 app.set("views", "views");
 app.set("view engine", "pug");
 
@@ -8,7 +24,7 @@ app.use(express.static("public"));
 //app.use(express.static("public/styles.css"));
 
 app.get("/", (req, res) => {
-    res.render("home", {seeds:[{imgURL:"/images/flower_27.jpg", name:"the_flower1"}, {imgURL:"/images/flower_27.jpg", name:"the_flower2"}, {imgURL:"/images/flower_27.jpg", name:"the_flower3"}, {imgURL:"/images/flower_27.jpg", name:"the_flower4"}, {imgURL:"/images/flower_27.jpg", name:"the_flower6"}, {imgURL:"/images/flower_27.jpg", name:"the_flower5"}, {imgURL:"/images/flower_27.jpg", name:"the_flower7"}, {imgURL:"/images/flower_27.jpg", name:"the_flower8"}, {imgURL:"/images/flower_27.jpg", name:"the_flower9"}, {imgURL:"/images/flower_27.jpg", name:"the_flower10"}, {imgURL:"/images/flower_27.jpg", name:"the_flower11"}, {imgURL:"/images/flower_27.jpg", name:"the_flower12"}, {imgURL:"/images/flower_27.jpg", name:"the_flower13"}, {imgURL:"/images/flower_27.jpg", name:"the_flower14"}]});
+    res.render("home", {seeds});
 });
 
 app.listen(3020, () => {

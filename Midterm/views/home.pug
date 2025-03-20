@@ -20,7 +20,7 @@ html
                 input(id="rowCount", name="gardenRows" type="number", min="1", max="5")
                 label(for="gardenCols") Garden Columns:
                 input(id="columnCount", name="gardenCols", type="number", min="1", max="5")
-                input(type="submit")
+                input(type="submit" value="Apply")
         div#seedgridholder
             //-populate the list of seeds here
             - for (let i = 0; i < seeds.length; i++)
