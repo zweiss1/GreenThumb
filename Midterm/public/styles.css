@@ -1,0 +1,82 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1e6d6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    color: #f1e6d6;
+    background-color: #056608;
+    margin: 0;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#navbarspacer{
+    width: 500px;
+}
+
+#navbar {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    /* background-color: rgb(16, 112, 12); */
+}
+
+#navbar a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #f1e6d6;
+}
+
+h1 {
+    margin: 0;
+    height: 100%;
+    font-size: 40px;
+}
+
+canvas {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+#homemain {
+    display: flex;
+    flex-direction: row;
+}
+
+#seedgridholder {
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-auto-rows: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 315px;
+    padding: 10px;
+    overflow-y: scroll;
+
+    height: 480px;
+    margin-top:20px;
+    border-radius: 5px;
+}
+
+#seedgridholder img {
+    cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
