@@ -4,7 +4,7 @@ html
         title GreenThumb
         link(rel="icon", href="/images/flower_27.jpg")
         link(rel="stylesheet", href="/styles.css")
-        //script(defer src="/home.js")
+        script(defer src="/home.js")
     
     body 
     //- the header
@@ -15,11 +15,17 @@ html
     main#homemain 
         div#canvasholder 
             canvas#diagramcanvas(width="700px", height="500px") 
+            form#gridform
+                label(for="gardenRows") Garden Rows:
+                input(id="rowCount", name="gardenRows" type="number", min="1", max="6")
+                label(for="gardenCols") Garden Columns:
+                input(id="columnCount", name="gardenCols", type="number", min="1", max="6")
+                input(type="submit")
         div#seedgridholder
             //-populate the list of seeds here
             - for (let i = 0; i < seeds.length; i++)
-                div(style="position:relative;")
-                    img(src=seeds[i].imgURL, alt=seeds[i].name, width="100", height="100")
+                div(class="seedholder", id=seeds[i].name, style="position:relative;")
+                    img(class="seedimg", src=seeds[i].imgURL, alt=seeds[i].name + " seed", width="100", height="100")
                     //- Add a color overlay to an image when you select the plant
                     .overlay
 
