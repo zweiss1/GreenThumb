@@ -17,9 +17,9 @@ html
             canvas#diagramcanvas(width="700px", height="500px") 
             form#gridform
                 label(for="gardenRows") Garden Rows:
-                input(id="rowCount", name="gardenRows" type="number", min="1", max="6")
+                input(id="rowCount", name="gardenRows" type="number", min="1", max="5")
                 label(for="gardenCols") Garden Columns:
-                input(id="columnCount", name="gardenCols", type="number", min="1", max="6")
+                input(id="columnCount", name="gardenCols", type="number", min="1", max="5")
                 input(type="submit")
         div#seedgridholder
             //-populate the list of seeds here
@@ -29,4 +29,4 @@ html
                     //- Add a color overlay to an image when you select the plant
                     .overlay
 
-            
+    footer

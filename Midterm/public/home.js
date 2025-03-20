@@ -36,7 +36,9 @@ gridform.addEventListener("submit", (event) => {
     //don't do the form submit shit to the url
     event.preventDefault();
     console.log("drawing grid");
-    drawGrid(document.getElementById("rowCount").value, document.getElementById("columnCount").value);
+    grid.setRows(document.getElementById("rowCount").value);
+    grid.setCols(document.getElementById("columnCount").value);
+    grid.draw();
 });
 
 function onSeedClicked(clickEvent){
@@ -52,6 +54,15 @@ function onSeedClicked(clickEvent){
 }
 
 
+
+// MISC FUNCTIONS
+
+//gets the image src given the ID of the parent element (selectedSeed)
+function getImgSrc(seed){
+    let seedimg = seed.querySelector("img");
+    if (!seedimg) return null;
+    return seedimg.src;
+}
 
 
 // CANVAS LOGIC
@@ -99,6 +110,9 @@ class grid {
         //check if the click was in the grid
         if (xPos > 0 && xPos < this.cellSize * this.cols && yPos > 0 && yPos < this.cellSize * this.rows){
             console.log("clicked inside the grid!");
+            let x = Math.floor(xPos / this.cellSize) + 1;
+            let y = Math.floor(yPos / this.cellSize) + 1;
+            console.log("ClickPos: x=" + x + " y=" + y);
         }
         else {
             console.log("clicked outside the grid");
