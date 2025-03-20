@@ -20,11 +20,18 @@ const seeds = [
 app.set("views", "views");
 app.set("view engine", "pug");
 
+// Lets me receive form data from POSTs, not sure why
+app.use(express.urlencoded({ extended: true })); 
+
 app.use(express.static("public"));
 //app.use(express.static("public/styles.css"));
 
 app.get("/", (req, res) => {
     res.render("home", {seeds});
+});
+
+app.post("/name", (req, res) => {
+    console.log(req.body);
 });
 
 app.listen(3020, () => {
