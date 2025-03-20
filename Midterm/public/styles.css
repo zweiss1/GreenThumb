@@ -94,3 +94,14 @@ input {
 footer {
     height: 40px;
 }
+
+h2, h3 {
+    text-align: center;
+}
+
+#certificatebody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

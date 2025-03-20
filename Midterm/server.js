@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.post("/name", (req, res) => {
     console.log(req.body);
+    res.render("certificate", {name: req.body.name});
 });
 
 app.listen(3020, () => {
